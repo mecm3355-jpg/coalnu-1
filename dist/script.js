@@ -34,29 +34,6 @@ const sectionObserver = new IntersectionObserver(entries => {
 }, { rootMargin: '-30% 0px -60%', threshold: 0 });
 sections.forEach(section => sectionObserver.observe(section));
 
-const testimonialTrack = document.querySelector('[data-testimonial-track]');
-const testimonials = testimonialTrack ? [...testimonialTrack.children] : [];
-let reviewIndex = 0;
-
-function visibleReviewCount() {
-  return window.innerWidth > 900 ? 2 : 1;
-}
-
-function moveReviews(direction = 1) {
-  const maxIndex = Math.max(0, testimonials.length - visibleReviewCount());
-  reviewIndex += direction;
-  if (reviewIndex > maxIndex) reviewIndex = 0;
-  if (reviewIndex < 0) reviewIndex = maxIndex;
-  if (!testimonials[reviewIndex]) return;
-  const offset = testimonials[reviewIndex].offsetLeft - testimonialTrack.offsetLeft;
-  testimonialTrack.style.transform = `translateX(-${offset}px)`;
-}
-
-document.querySelector('[data-review-next]')?.addEventListener('click', () => moveReviews(1));
-document.querySelector('[data-next-review]')?.addEventListener('click', () => moveReviews(1));
-document.querySelector('[data-review-prev]')?.addEventListener('click', () => moveReviews(-1));
-window.addEventListener('resize', () => { reviewIndex = 0; moveReviews(0); });
-
 const form = document.querySelector('[data-contact-form]');
 const formStatus = document.querySelector('.form-status');
 form?.addEventListener('submit', event => {
