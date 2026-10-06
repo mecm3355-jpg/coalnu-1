@@ -116,22 +116,22 @@ img { display: block; max-width: 100%; }
 
 .services-section { position: relative; background: var(--sky); }
 .services-section::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 25%; background: rgba(255,255,255,.17); }
-.pricing-layout { position: relative; display: grid; grid-template-columns: 285px minmax(0,1fr); gap: 30px; align-items: center; }
+.pricing-layout { position: relative; display: grid; grid-template-columns: 285px minmax(0,1fr); gap: 30px; align-items: start; }
 .section-intro h2 em { color: var(--blue); }
 .curve-arrow { display: block; width: 70px; margin-left: 170px; font-size: 40px; transform: rotate(14deg); }
-.pricing-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; align-items: stretch; }
-.price-card { position: relative; min-height: 360px; padding: 27px 22px 20px; display: flex; flex-direction: column; background: rgba(255,255,255,.93); border-radius: 17px; box-shadow: 0 10px 25px rgba(7,29,57,.08); }
-.price-card.featured { border-top: 10px solid var(--yellow); padding-top: 38px; }
+.pricing-grid { display: grid; grid-template-columns: 1fr; gap: 16px; align-items: stretch; }
+.price-card { position: relative; min-height: 150px; padding: 22px 24px; display: grid; grid-template-columns: minmax(150px,.75fr) minmax(190px,1.1fr) 140px; grid-template-rows: auto auto 1fr; column-gap: 24px; align-items: center; background: rgba(255,255,255,.93); border-radius: 17px; box-shadow: 0 10px 25px rgba(7,29,57,.08); }
+.price-card.featured { border-top: 10px solid var(--yellow); padding-top: 30px; }
 .popular { position: absolute; left: 0; right: 0; top: -10px; height: 32px; display: flex; align-items: center; justify-content: center; gap: 38px; font-size: 9px; font-weight: 800; }
-.price-head { display: flex; justify-content: space-between; color: #1674b6; font-size: 11px; font-weight: 800; }
-.price-head i { width: 34px; height: 34px; display: grid; place-items: center; margin-top: -8px; color: white; background: #3ea8ee; border-radius: 50%; font-style: normal; }
+.price-head { grid-column: 1; grid-row: 1; display: flex; justify-content: space-between; align-items: center; color: #1674b6; font-size: 11px; font-weight: 800; }
+.price-head i { width: 34px; height: 34px; display: grid; place-items: center; color: white; background: #3ea8ee; border-radius: 50%; font-style: normal; }
 .featured .price-head { color: #c39900; }
 .featured .price-head i { color: var(--ink); background: var(--yellow); }
-.price-card h3 { margin: 14px 0 5px; font-family: "Manrope", sans-serif; font-size: 28px; }
-.price-card > p { margin: 0; color: var(--muted); font-size: 11px; }
-.price-card ul { padding: 0; margin: 22px 0; list-style: none; font-size: 12px; line-height: 1.75; }
+.price-card h3 { grid-column: 1; grid-row: 2; margin: 5px 0 3px; font-family: "Manrope", sans-serif; font-size: 28px; }
+.price-card > p { grid-column: 1; grid-row: 3; align-self: start; margin: 0; color: var(--muted); font-size: 11px; }
+.price-card ul { grid-column: 2; grid-row: 1 / 4; align-self: center; padding: 0; margin: 0; list-style: none; font-size: 12px; line-height: 1.75; }
 .price-card li::before { content: "✓"; margin-right: 6px; font-weight: 800; }
-.outline-button { min-height: 40px; margin-top: auto; display: grid; place-items: center; border: 1px solid #bbc4cc; border-radius: 999px; font-size: 12px; font-weight: 800; }
+.outline-button { grid-column: 3; grid-row: 1 / 4; width: 100%; min-height: 40px; margin-top: 0; display: grid; place-items: center; border: 1px solid #bbc4cc; border-radius: 999px; font-size: 12px; font-weight: 800; }
 .outline-button.filled { border-color: var(--yellow); background: var(--yellow); }
 
 .logo-strip { padding: 29px 0; border-block: 1px solid #edf0f2; background: #fff; }
@@ -296,7 +296,12 @@ img { display: block; max-width: 100%; }
   .card-caption h3 { font-size: 15px; }
   .card-caption p { font-size: 10px; }
   .pricing-grid { grid-template-columns: 1fr; }
-  .price-card { min-height: 0; }
+  .price-card { min-height: 0; padding: 27px 22px 20px; display: flex; flex-direction: column; align-items: stretch; }
+  .price-card.featured { padding-top: 38px; }
+  .price-head i { margin-top: -8px; }
+  .price-card h3 { margin: 14px 0 5px; }
+  .price-card ul { margin: 22px 0; }
+  .outline-button { width: auto; margin-top: auto; }
   .logos { gap: 38px; }
   .reviews-layout { grid-template-columns: 1fr; }
   .testimonial-viewport { width: calc(100% + 14px); }
