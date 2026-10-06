@@ -17,6 +17,7 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; color: var(--ink); font-family: "DM Sans", sans-serif; background: #fff; overflow-x: hidden; }
+main { display: flex; flex-direction: column; }
 body.menu-open, body.modal-open { overflow: hidden; }
 a { color: inherit; text-decoration: none; }
 button, input { font: inherit; }
@@ -173,7 +174,7 @@ img { display: block; max-width: 100%; }
 .contact-form .button { min-height: 42px; white-space: nowrap; }
 .form-status { min-height: 18px; margin: 8px 0 0 !important; color: #fff9c5; }
 
-.footer { color: rgba(255,255,255,.88); background: #061d37; }
+.footer { order: 100; color: rgba(255,255,255,.88); background: #061d37; }
 .footer-grid { padding: 48px 0 35px; display: grid; grid-template-columns: 1.55fr .75fr .9fr 1.25fr .7fr; gap: 42px; }
 .light-logo { color: #fff; }
 .footer-brand p { font-size: 12px; line-height: 1.65; }
@@ -214,6 +215,13 @@ img { display: block; max-width: 100%; }
 }
 
 @media (max-width: 900px) {
+  .hero { order: 0; }
+  .footer { order: 1; }
+  .work-section { order: 2; }
+  .services-section { order: 3; }
+  .reviews-section { order: 4; }
+  .logo-strip { order: 5; }
+  .contact-section { order: 6; }
   .topbar-inner > span, .top-links span { display: none; }
   .topbar-inner { justify-content: flex-end; }
   .menu-toggle { display: block; position: relative; z-index: 12; }

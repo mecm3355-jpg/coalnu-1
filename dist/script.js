@@ -12,25 +12,6 @@ menuButton?.addEventListener('click', () => setMenu(menuButton.getAttribute('ari
 navLinks.forEach(link => link.addEventListener('click', () => setMenu(false)));
 window.addEventListener('resize', () => { if (window.innerWidth > 900) setMenu(false); });
 
-const footer = document.querySelector('.footer');
-const mobileFooterAnchor = document.querySelector('[data-mobile-footer-anchor]');
-const desktopFooterAnchor = document.createComment('desktop footer position');
-const mobileFooterQuery = window.matchMedia('(max-width: 680px)');
-
-if (footer) footer.before(desktopFooterAnchor);
-
-function placeFooter(query = mobileFooterQuery) {
-  if (!footer || !mobileFooterAnchor) return;
-  if (query.matches) {
-    mobileFooterAnchor.after(footer);
-  } else {
-    desktopFooterAnchor.after(footer);
-  }
-}
-
-mobileFooterQuery.addEventListener('change', placeFooter);
-placeFooter();
-
 const revealItems = document.querySelectorAll('.reveal');
 const revealObserver = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
